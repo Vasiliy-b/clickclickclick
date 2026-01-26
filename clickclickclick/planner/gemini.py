@@ -101,7 +101,7 @@ class GeminiPlanner(Planner):
             self.chat_history.append({"role": "user", "parts": [prompt]})
 
         args = function_call.args
-        d = {key: args[key] for key in args}
+        d = {key: args[key] for key in args} if args else {}
         logger.info(f"{d} args")
         self.chat_history.append(
             {"role": "model", "parts": [f"function name: {function_name} args: {d}"]}
@@ -111,7 +111,7 @@ class GeminiPlanner(Planner):
             with open("planner.logs", "a") as f:
                 f.write("\n".join(map(str, self.chat_history)))
                 f.write("\n\n")
-        return [(function_name, {key: args[key] for key in args})]
+        return [(function_name, d)]
 
     def add_finder_message(self, message):
         self.chat_history.append({"role": "user", "parts": [message]})
