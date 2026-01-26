@@ -80,7 +80,7 @@ def run_gradio():
                 gr.Examples(examples, inputs=task_prompt)
 
             with gr.Column():
-                chatbot = gr.Chatbot(type="messages", label="Task Execution History")
+                chatbot = gr.Chatbot(label="Task Execution History")
 
         # Connect the submit button to execute_task_prompt function
         submit_btn.click(
