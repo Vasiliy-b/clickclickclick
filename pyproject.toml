@@ -37,7 +37,8 @@ requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
 [tool.pdm.build]
-includes = ["clickclickclick", "main.py", "api.py", "interface.py"]
+includes = ["clickclickclick"]
+package-dir = "."
 
 [project.scripts]
 click3 = "main:cli"
